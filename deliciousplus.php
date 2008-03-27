@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: del.icio.us+ widget
+Plugin Name: del.icio.us-plus widget
 Description: Adds a sidebar widget to display del.icio.us links
 Author: David Lynch (based on the Automattic widget)
 Version: 1.0
@@ -88,31 +88,32 @@ function widget_deliciousplus_init() {
 				a.setAttribute('class', 'deliciousplus-post');
 				a.innerHTML = post.d;
 				<?php if($options['favicon']) {?>
-				var img = document.createElement('img')
-				img.style.display = 'none'
-				img.height = img.width = 16
-				img.src = post.u.split('/').splice(0,3).join('/')+'/favicon.ico'
+				var img = document.createElement('img');
+				img.style.display = 'none';
+				img.height = img.width = 16;
+				img.src = post.u.split('/').splice(0,3).join('/')+'/favicon.ico';
 				img.onload = showImage(img);
-				li.appendChild(img)
+				li.appendChild(img);
 				<?php }?>
 				li.appendChild(a);
-				<?php if($options['description']) {?>if (post.n) { li.innerHTML += ': '+unescape(post.n) }<?php }?>
+				<?php if($options['description']) {?>if (post.n) { li.innerHTML += ': <span class="deliciousplus-description">'+unescape(post.n)+'</span>' }<?php }?>
 				<?php if($options['showtags']) {?>
 				if (post.t.length > 0) {
 					li.appendChild(document.createTextNode(' / '));
+					var tags = document.createElement('span');
+					tags.setAttribute('class', 'deliciousplus-tags');
 					for(var j=0, tag; tag = post.t[j]; j++) {
 						var ta = document.createElement('a');
 						ta.setAttribute('href', 'http://del.icio.us/<?php echo $options['username'];?>/'+encodeURIComponent(tag));
-						ta.setAttribute('class', 'deliciousplus-tag');
 						ta.appendChild(document.createTextNode(tag));
-						li.appendChild(ta);
-						li.appendChild(document.createTextNode(' '));
+						tags.appendChild(ta);
+						tags.appendChild(document.createTextNode(' '));
 					}
+					li.appendChild(tags);
 				}
 				<?php }?>
 				ul.appendChild(li);
 			}
-			ul.setAttribute('id', 'deliciousplus-list');
 			document.getElementById('deliciousplus-box').appendChild(ul);
 			</script>
 			<noscript><a href="http://del.icio.us/kemayo">my del.icio.us</a></noscript>
