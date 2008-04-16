@@ -2,9 +2,9 @@
 Contributors: kemayo
 Donate link: http://davidlynch.org/blog/donate
 Tags: del.icio.us, widget
-Requires at least: 2.3
+Requires at least: 2.2
 Tested up to: 2.5
-Stable tag: 1.0
+Stable tag: 1.1
 
 Makes available a widget to display your recent links tagged with del.icio.us.
 
@@ -55,3 +55,8 @@ With slight variations, depending on which options you have enabled.
 == Screenshots ==
 
 1. Example of the widget, displayed within the [Simplr](http://www.plaintxt.org/themes/simplr/) theme, with all options enabled.
+
+== History ==
+
+* 1.1: Allow multiple instances of the widget.
+* 1.0: Initial release.
