@@ -164,8 +164,8 @@ function widget_deliciousplus($args, $widget_args = 1) {
 	}
 
 	$json_url = 'http://feeds.delicious.com/v2/json/' . rawurlencode($options['username']);
-	$json_url.= count($options['tags']) ? '/' . rawurlencode(implode('+', $options['tags'])) : '';
-	$json_url.= '?count=' . ((int) $options['count']) . ';';
+	$json_url.= (is_array($options['tags']) && count($options['tags'])) ? '/' . rawurlencode(implode('+', $options['tags'])) : '';
+	$json_url.= '?count=' . ((int) $options['count']);
 	
 	echo $before_widget;
 	echo $before_title . "<a href='http://delicious.com/{$options['username']}'>{$options['title']}</a>" . $after_title;
