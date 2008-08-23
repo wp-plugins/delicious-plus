@@ -1,16 +1,16 @@
-=== del.icio.us-plus ===
+=== delicious-plus ===
 Contributors: kemayo
 Donate link: http://davidlynch.org/blog/donate
-Tags: del.icio.us, widget
+Tags: delicious, widget
 Requires at least: 2.2
-Tested up to: 2.6
-Stable tag: 1.2
+Tested up to: 2.6.1
+Stable tag: 1.2.1
 
-Makes available a widget to display your recent links tagged with del.icio.us.
+Makes available a widget to display your recent links tagged with delicious.
 
 == Description ==
 
-Produces output very similar to [del.icio.us's linkrolls script](http://del.icio.us/help/linkrolls), but in a way that isn't guaranteed to mess with most themes.
+Produces output very similar to [delicious's linkrolls script](http://delicious.com/help/linkrolls), but in a way that isn't guaranteed to mess with most themes.
 
 Allows you to customize:
 
@@ -58,6 +58,8 @@ With slight variations, depending on which options you have enabled.
 
 == History ==
 
+* 1.2.1: Bump the Wordpress version and get rid of some legacy mentions of
+ "del.icio.us".
 * 1.2: Update for the annoyingly backwards-incompatible nature of the new
   delicious.com design and v2 feeds api.
 * 1.1: Allow multiple instances of the widget.
