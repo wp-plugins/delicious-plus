@@ -3,7 +3,7 @@ Contributors: kemayo
 Donate link: http://davidlynch.org/blog/donate
 Tags: del.icio.us, widget
 Requires at least: 2.2
-Tested up to: 2.5
+Tested up to: 2.6
 Stable tag: 1.2
 
 Makes available a widget to display your recent links tagged with del.icio.us.
