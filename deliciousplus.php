@@ -186,7 +186,7 @@ function widget_deliciousplus($args, $widget_args = 1) {
 	<script type="text/javascript">
 	function showImage(img){ return (function(){ img.style.display='inline'; }) }
 	var ul = document.createElement('ul');
-	for (var i=0, post; post = Delicious.posts[i]; i++) {
+	for (var i=0, post; post = Delicious[i]; i++) {
 		var li = document.createElement('li');
 		var a = document.createElement('a');
 		a.setAttribute('href', post.u);
