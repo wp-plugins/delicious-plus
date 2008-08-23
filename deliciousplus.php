@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: del.icio.us-plus widget
-Description: Adds a sidebar widget to display del.icio.us links
+Plugin Name: delicious-plus widget
+Description: Adds a sidebar widget to display delicious links
 Author: David Lynch
-Version: 1.1
+Version: 1.2
 Author URI: http://davidlynch.org
 */
 /*
@@ -86,7 +86,7 @@ function widget_deliciousplus_control($widget_args = 1) {
 	if(-1 == $number) { // We echo out a template for a form which can be converted to a specific form later via JS
 		$count = 10;
 		$username = 'wordpress';
-		$title = 'del.icio.us';
+		$title = 'delicious';
 		$showtags = false;
 		$favicon = false;
 		$description = false;
@@ -113,7 +113,7 @@ function widget_deliciousplus_control($widget_args = 1) {
 				<input type="text" class="widefat" id="deliciousplus-title-<?php echo $number; ?>" name="widget-deliciousplus[<?php echo $number; ?>][title]" value="<?php echo $title; ?>" />
 			</label><br />
 			<label for="deliciousplus-username-<?php echo $number; ?>">
-				<?php _e('del.icio.us login:', 'widgets'); ?>
+				<?php _e('delicious login:', 'widgets'); ?>
 				<input type="text" class="widefat" id="deliciousplus-username-<?php echo $number; ?>" name="widget-deliciousplus[<?php echo $number; ?>][username]" value="<?php echo $username; ?>" />
 			</label><br />
 			<label for="deliciousplus-count-<?php echo $number; ?>">
@@ -152,7 +152,7 @@ function widget_deliciousplus($args, $widget_args = 1) {
 	$widget_args = wp_parse_args($widget_args, array('number' => -1));
 	extract($widget_args, EXTR_SKIP);
 	
-	$defaults = array('count' => 10, 'username' => 'wordpress', 'title' => 'del.icio.us',);
+	$defaults = array('count' => 10, 'username' => 'wordpress', 'title' => 'delicious',);
 	$options = get_option('widget_deliciousplus');
 	if(!isset($options[$number])) { return; }
 	$options = $options[$number];
@@ -163,12 +163,12 @@ function widget_deliciousplus($args, $widget_args = 1) {
 		}
 	}
 
-	$json_url = 'http://del.icio.us/feeds/json/' . rawurlencode($options['username']);
+	$json_url = 'http://feeds.delicious.com/v2/json/' . rawurlencode($options['username']);
 	$json_url.= count($options['tags']) ? '/' . rawurlencode(implode('+', $options['tags'])) : '';
 	$json_url.= '?count=' . ((int) $options['count']) . ';';
 	
 	echo $before_widget;
-	echo $before_title . "<a href='http://del.icio.us/{$options['username']}'>{$options['title']}</a>" . $after_title;
+	echo $before_title . "<a href='http://delicious.com/{$options['username']}'>{$options['title']}</a>" . $after_title;
 	?>
 	<div id="deliciousplus-box-<?php echo $number; ?>" style="margin:0;padding:0;border:none;"> </div>
 	<script type="text/javascript" src="<?php echo $json_url; ?>"></script>
@@ -198,7 +198,7 @@ function widget_deliciousplus($args, $widget_args = 1) {
 			tags.setAttribute('class', 'deliciousplus-tags');
 			for(var j=0, tag; tag = post.t[j]; j++) {
 				var ta = document.createElement('a');
-				ta.setAttribute('href', 'http://del.icio.us/<?php echo $options['username'];?>/'+encodeURIComponent(tag));
+				ta.setAttribute('href', 'http://delicious.com/<?php echo $options['username'];?>/'+encodeURIComponent(tag));
 				ta.appendChild(document.createTextNode(tag));
 				tags.appendChild(ta);
 				tags.appendChild(document.createTextNode(' '));
@@ -210,7 +210,7 @@ function widget_deliciousplus($args, $widget_args = 1) {
 	}
 	document.getElementById('deliciousplus-box-<?php echo $number; ?>').appendChild(ul);
 	</script>
-	<noscript><a href="http://del.icio.us/<?php echo $options['username']; ?>">my del.icio.us</a></noscript>
+	<noscript><a href="http://delicious.com/<?php echo $options['username']; ?>">my delicious</a></noscript>
 <?php
 	echo $after_widget;
 }
@@ -220,9 +220,9 @@ function widget_deliciousplus_init() {
 		$options = array();
 	}
 	
-	$widget_ops = array('classname' => 'widget_deliciousplus', 'description' => __('A widget to display del.icio.us links'));
+	$widget_ops = array('classname' => 'widget_deliciousplus', 'description' => __('A widget to display delicious links'));
 	$control_ops = array('width' => 400, 'height' => 350, 'id_base' => 'deliciousplus');
-	$name = __('del.icio.us plus');
+	$name = __('delicious plus');
 
 	if(isset($options['username'])) {
 		// Upgrading from an old version, pre-multi.
