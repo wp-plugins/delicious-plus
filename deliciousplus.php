@@ -3,7 +3,7 @@
 Plugin Name: delicious-plus widget
 Description: Adds a sidebar widget to display delicious links
 Author: David Lynch
-Version: 1.2
+Version: 1.2.1
 Author URI: http://davidlynch.org
 */
 /*
