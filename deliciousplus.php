@@ -163,14 +163,25 @@ function widget_deliciousplus($args, $widget_args = 1) {
 		}
 	}
 
+	$tags = false;
+	if($options['tags'] && ((count($options['tags']) > 1) || ($options['tags'][0] != ''))) {
+		$tags = $options['tags'];
+	}
+
 	$json_url = 'http://feeds.delicious.com/v2/json/' . rawurlencode($options['username']);
-	$json_url.= (is_array($options['tags']) && count($options['tags'])) ? '/' . rawurlencode(implode('+', $options['tags'])) : '';
-	$json_url.= '?count=' . ((int) $options['count']);
+	$json_url.= $tags ? '/' . rawurlencode(implode('+', $tags)) : '';
+	$json_url.= '?count=' . ((int) $options['count']) . '&callback=makeItDelicious';
 	
 	echo $before_widget;
 	echo $before_title . "<a href='http://delicious.com/{$options['username']}'>{$options['title']}</a>" . $after_title;
 	?>
 	<div id="deliciousplus-box-<?php echo $number; ?>" style="margin:0;padding:0;border:none;"> </div>
+	<script type="text/javascript">
+	var Delicious;
+	function makeItDelicious(data) {
+		Delicious = data;
+	}
+	</script>
 	<script type="text/javascript" src="<?php echo $json_url; ?>"></script>
 	<script type="text/javascript">
 	function showImage(img){ return (function(){ img.style.display='inline'; }) }
