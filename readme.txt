@@ -4,7 +4,7 @@ Donate link: http://davidlynch.org/blog/donate
 Tags: del.icio.us, widget
 Requires at least: 2.2
 Tested up to: 2.5
-Stable tag: 1.1
+Stable tag: 1.2
 
 Makes available a widget to display your recent links tagged with del.icio.us.
 
@@ -58,5 +58,7 @@ With slight variations, depending on which options you have enabled.
 
 == History ==
 
+* 1.2: Update for the annoyingly backwards-incompatible nature of the new
+  delicious.com design and v2 feeds api.
 * 1.1: Allow multiple instances of the widget.
 * 1.0: Initial release.
